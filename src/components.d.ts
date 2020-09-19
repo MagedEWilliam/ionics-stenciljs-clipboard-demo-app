@@ -42,6 +42,7 @@ declare namespace LocalJSX {
     interface AppClipboardHistory {
     }
     interface AppHome {
+        "onChangeURL"?: (event: CustomEvent<any>) => void;
         "onCopyData"?: (event: CustomEvent<any>) => void;
         "onShareDialog"?: (event: CustomEvent<any>) => void;
     }

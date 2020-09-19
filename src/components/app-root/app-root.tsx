@@ -26,7 +26,8 @@ export class AppRoot {
     return (
       <ion-app>
         <ion-router useHash={false}>
-          <ion-route url="/" component="app-home" />
+          <ion-route url="/?" component="app-home" />
+          <ion-route url="/:" component="app-home" />
           <ion-route url="/history/" component="app-clipboard-history" />
         </ion-router>
         <ion-nav />

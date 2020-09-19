@@ -9,17 +9,18 @@ export class AppHome {
 
   @Event() shareDialog: EventEmitter;
   @Event() copyData: EventEmitter;
+  @Event() changeURL: EventEmitter;
 
   copybody: String;
 
-  get_copyBody = ()=>{
-    const getUrlQueries = window.location.search;
-    const regex = /copybody=(.*)&/;
+  get_copyBody = ()=> {
+    const getUrlQueries = window.location.pathname;
+    const regex = /copybody=(.*)/;
     let m;
 
     if(getUrlQueries){
       if ((m = regex.exec(getUrlQueries)) !== null) {
-        return m[1];
+        return decodeURIComponent(decodeURIComponent(m[1]));
       }
     }
     return '';
@@ -58,8 +59,14 @@ export class AppHome {
   }
 
   componentWillLoad(){
-    this.copybody = this.get_copyBody();    
-    console.log(this.copybody)
+    this.copybody = this.get_copyBody();
+    console.log(  this.copybody.toString() )
+  }
+
+  updateURL(e){
+    var searchParams = new URLSearchParams(window.location.search);
+    searchParams.set("copybody", encodeURIComponent(e.target.value) );
+    window.history.pushState("", "", searchParams.toString() );
   }
 
   render() {
@@ -69,6 +76,7 @@ export class AppHome {
           <ion-col class="textarea-wrapper">
             <ion-textarea 
               id="textarea"
+              onIonChange={(e) => this.updateURL(e)}
               autoGrow={true} 
               autofocus={true} 
               placeholder="Type something..." 
@@ -96,7 +104,8 @@ export class AppHome {
                 <ion-icon name="copy"></ion-icon>
                 <p>Copy</p>
             </ion-button>
-{/* 
+
+            {/* 
             <ion-button 
               href="/history/"
               expand="full"
