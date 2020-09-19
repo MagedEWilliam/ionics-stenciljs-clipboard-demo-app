@@ -41,6 +41,8 @@ declare global {
 }
 declare namespace LocalJSX {
     interface AppHome {
+        "onCopyData"?: (event: CustomEvent<any>) => void;
+        "onShareDialog"?: (event: CustomEvent<any>) => void;
     }
     interface AppProfile {
         "name"?: string;

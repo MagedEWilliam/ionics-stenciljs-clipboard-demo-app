@@ -8,8 +8,9 @@ ion-textarea textarea{
     font-size: 20px;
     display: grid;
     grid-template-rows: 1fr auto;
-    overflow: scroll;
+    overflow-y: scroll;
     width: 100vw;
+    max-width: 375px;
 }
 ion-textarea{
     max-height: calc(100vh - 200px);
@@ -19,8 +20,14 @@ ion-textarea{
     display: flex;
     align-items: flex-end;
 }
-
+.rotate-90{
+    transform: rotate(-90deg);
+}
 ion-button{
     border-radius: 58px;
     overflow: hidden;
+}
+
+hr{
+    background: var(--ion-color-light, #f4f5f8) !important
 }
