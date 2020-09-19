@@ -3,6 +3,7 @@ ion-icon{
 }
 ion-textarea textarea{
     min-height: 64px;
+    color: var(--ion-text-color) !important;
 }
 .fill-first-row {
     font-size: 20px;

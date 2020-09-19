@@ -6,26 +6,25 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface AppHome {
+    interface AppClipboardHistory {
     }
-    interface AppProfile {
-        "name": string;
+    interface AppHome {
     }
     interface AppRoot {
     }
 }
 declare global {
+    interface HTMLAppClipboardHistoryElement extends Components.AppClipboardHistory, HTMLStencilElement {
+    }
+    var HTMLAppClipboardHistoryElement: {
+        prototype: HTMLAppClipboardHistoryElement;
+        new (): HTMLAppClipboardHistoryElement;
+    };
     interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
     }
     var HTMLAppHomeElement: {
         prototype: HTMLAppHomeElement;
         new (): HTMLAppHomeElement;
-    };
-    interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {
-    }
-    var HTMLAppProfileElement: {
-        prototype: HTMLAppProfileElement;
-        new (): HTMLAppProfileElement;
     };
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
@@ -34,24 +33,23 @@ declare global {
         new (): HTMLAppRootElement;
     };
     interface HTMLElementTagNameMap {
+        "app-clipboard-history": HTMLAppClipboardHistoryElement;
         "app-home": HTMLAppHomeElement;
-        "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
     }
 }
 declare namespace LocalJSX {
+    interface AppClipboardHistory {
+    }
     interface AppHome {
         "onCopyData"?: (event: CustomEvent<any>) => void;
         "onShareDialog"?: (event: CustomEvent<any>) => void;
     }
-    interface AppProfile {
-        "name"?: string;
-    }
     interface AppRoot {
     }
     interface IntrinsicElements {
+        "app-clipboard-history": AppClipboardHistory;
         "app-home": AppHome;
-        "app-profile": AppProfile;
         "app-root": AppRoot;
     }
 }
@@ -59,8 +57,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "app-clipboard-history": LocalJSX.AppClipboardHistory & JSXBase.HTMLAttributes<HTMLAppClipboardHistoryElement>;
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-            "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
         }
     }

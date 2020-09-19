@@ -1,4 +1,5 @@
 import { Event, EventEmitter, Component, h } from '@stencil/core';
+import { toastController } from '@ionic/core';
 
 @Component({
   tag: 'app-home',
@@ -24,10 +25,19 @@ export class AppHome {
     return '';
   }
 
-  exec_copyData(){
+  async presentToast() {
+    const toast = await toastController.create({
+      message: 'Copied.',
+      duration: 1000
+    });
+    toast.present();
+  }
+
+  exec_copyData (){
     const el = document.querySelector('#textarea textarea') as HTMLInputElement;
     el.select();
     document.execCommand('copy');
+    this.presentToast();
   }
 
   share(e) {
@@ -83,13 +93,14 @@ export class AppHome {
                 <ion-icon name="copy"></ion-icon>
                 <p>Copy</p>
             </ion-button>
-
+{/* 
             <ion-button 
+              href="/history/"
               expand="full"
               fill="clear">
-                <ion-icon name="timer"></ion-icon>
+                <ion-icon name="timer-outline"></ion-icon>
                 <p>History</p>
-            </ion-button>
+            </ion-button> */}
           </ion-col>
         </ion-row>
       </ion-grid>,
