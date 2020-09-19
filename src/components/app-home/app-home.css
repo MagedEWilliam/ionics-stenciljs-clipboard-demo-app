@@ -1,0 +1,26 @@
+ion-icon{
+    padding: 8px;
+}
+ion-textarea textarea{
+    min-height: 64px;
+}
+.fill-first-row {
+    font-size: 20px;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    overflow: scroll;
+    width: 100vw;
+}
+ion-textarea{
+    max-height: calc(100vh - 200px);
+}
+.textarea-wrapper{
+    max-height: calc(100vh - 200px);
+    display: flex;
+    align-items: flex-end;
+}
+
+ion-button{
+    border-radius: 58px;
+    overflow: hidden;
+}
