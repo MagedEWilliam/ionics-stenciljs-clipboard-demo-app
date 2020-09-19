@@ -89,7 +89,7 @@ export class AppHome {
             <hr color="light"></hr>
 
             <ion-button 
-              onClick={(e) => this.exec_copyData()}
+              onClick={() => this.exec_copyData()}
               expand="full"
               color="light"
               disabled={!this.copybody}>
