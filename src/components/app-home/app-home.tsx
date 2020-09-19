@@ -25,10 +25,10 @@ export class AppHome {
     return '';
   }
 
-  async presentToast() {
+  async presentToast(msg) {
     const toast = await toastController.create({
-      message: 'Copied.',
-      duration: 1000
+      message: msg,
+      duration: 1500
     });
     toast.present();
   }
@@ -37,7 +37,7 @@ export class AppHome {
     const el = document.querySelector('#textarea textarea') as HTMLInputElement;
     el.select();
     document.execCommand('copy');
-    this.presentToast();
+    this.presentToast('Copied.');
   }
 
   share(e) {
@@ -48,8 +48,11 @@ export class AppHome {
             text: this.get_copyBody(),
             url: window.location.href
         })
-        .then(() => console.log('Successful share! 🎉'))
-        .catch(err => console.error(err));
+        .then(() => this.presentToast('Successful share! 🎉'))
+        .catch(err => {
+          this.presentToast('error');
+          console.log(err)
+        });
     }
     this.shareDialog.emit(e);
   }
