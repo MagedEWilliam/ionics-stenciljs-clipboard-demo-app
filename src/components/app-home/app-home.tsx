@@ -14,8 +14,8 @@ export class AppHome {
   copybody: String;
 
   get_copyBody = ()=> {
-    const getUrlQueries = window.location.pathname;
-    const regex = /copybody=(.*)/;
+    const getUrlQueries = window.location.search;
+    const regex = /\?copybody=(.*)/;
     let m;
 
     if(getUrlQueries){
@@ -64,9 +64,10 @@ export class AppHome {
   }
 
   updateURL(e){
-    var searchParams = new URLSearchParams(window.location.search);
-    searchParams.set("copybody", encodeURIComponent(e.target.value) );
-    window.history.pushState("", "", searchParams.toString() );
+    if (history.pushState) {
+      var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?copybody='+ encodeURIComponent(e.target.value);
+      window.history.pushState({path:newurl},'',newurl);
+    }
   }
 
   render() {
