@@ -1,3 +1,7 @@
+# Clipboard sharing PWA
+
+[Live here](https://stencil-clipboard.netlify.app/)
+
 # Ionic PWA Toolkit
 
 The PWA Toolkit is a starting point for building Progressive Web Apps using Ionic and Stencil.
